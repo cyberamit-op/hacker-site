@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Secret System</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:#00ff00;
+    font-family:Consolas,monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#btn{
+    padding:20px 40px;
+    font-size:24px;
+    background:black;
+    color:#00ff00;
+    border:2px solid #00ff00;
+    cursor:pointer;
+}
+
+#terminal{
+    display:none;
+    position:absolute;
+    top:20px;
+    left:20px;
+    white-space:pre-line;
+    font-size:20px;
+}
+
+.glitch{
+    animation:glitch 0.1s infinite;
+}
+
+@keyframes glitch{
+    0%{transform:translate(2px,0);}
+    50%{transform:translate(-2px,0);}
+    100%{transform:translate(2px,0);}
+}
+</style>
+</head>
+
+<body>
+
+<button id="btn">⚠ DO NOT CLICK ⚠</button>
+
+<div id="terminal"></div>
+
+<script>
+
+const btn = document.getElementById("btn");
+const terminal = document.getElementById("terminal");
+
+btn.onclick = () => {
+
+    btn.style.display = "none";
+    terminal.style.display = "block";
+
+    document.body.classList.add("glitch");
+
+    const lines = [
+        "Connecting...",
+        "Scanning device...",
+        "Checking secrets...",
+        "Loading hidden files...",
+        "Access Granted!",
+        "",
+        "User Detected...",
+        "",
+        "WELCOME TO AMIT'S SECRET PAGE 😎",
+        "",
+        "SYSTEM STATUS: ONLINE",
+        "POWER LEVEL: 9999+",
+        "",
+        "Mission Complete ✔"
+    ];
+
+    let i = 0;
+
+    function typeLine(){
+        if(i < lines.length){
+            terminal.innerHTML += lines[i] + "<br>";
+            i++;
+            setTimeout(typeLine, 1000);
+        }
+    }
+
+    typeLine();
+};
+
+</script>
+
+</body>
+</html>
